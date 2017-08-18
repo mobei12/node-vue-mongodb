@@ -10,9 +10,21 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
-    "jade": "~1.11.0",
     "morgan": "~1.8.1",
     "serve-favicon": "~2.4.2",
-    "vue": "^2.4.2"
+    "vue": "^2.4.2",
+    "async": "^2.4.1",//异步处理模块
+    "cheerio": "^0.22.0",//读取页面标签
+    "crypto": "^1.0.1",//加密模块
+    "eventproxy": "^0.3.5",//并发管理
+    "express-session": "^1.15.4",
+    "http": "^0.0.0",//服务器模块
+    "jquery": "^3.2.1",
+    "mongodb": "~2.2.7",//数据库依赖
+    "monk": "~5.0.2",//操作数据库
+    "session-file-store": "^1.1.1",
+    "superagent": "^3.5.2",
+    "url": "^0.11.0",
+    "utility": "^1.12.0"
   }
 }
