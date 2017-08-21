@@ -1,6 +1,5 @@
 const monk = require('monk');
 const db = monk('localhost:27017/learn_db');
-const monkUtil = {};
 /*
 查询数据 start
 */
@@ -8,7 +7,7 @@ const monkUtil = {};
     collectionName：表名
      callback：返回值
  */
-monkUtil.findALL = function (collectionName, callback) {
+var findALL = function (collectionName, callback) {
     var collection = db.get(collectionName);
     collection.find({}, function (err, cursor) {
         if (err) {
@@ -22,7 +21,7 @@ monkUtil.findALL = function (collectionName, callback) {
     collectionName：表名
     callback：返回值
  */
-monkUtil.findOne = function (id, collectionName, callback) {
+var findOne = function (id, collectionName, callback) {
     var collection = db.get(collectionName);
     collection.find({ _id: id }, function (err, cursor) {
         if (err) {
@@ -37,7 +36,7 @@ monkUtil.findOne = function (id, collectionName, callback) {
     keys:要查询的数据，不传查全部
     callback：返回值
  */
-monkUtil.findOneByQuery = function (query, collectionName, keys, callback) {
+var findOneByQuery = function (query, collectionName, keys, callback) {
     var collection = db.get(collectionName);
     if (keys.length === 0) {
         keys = [];
@@ -55,7 +54,7 @@ monkUtil.findOneByQuery = function (query, collectionName, keys, callback) {
     collectionName：表名
     callback：返回值
  */
-monkUtil.findOneAndUpdate = function (id, collectionName, data, callback) {
+var findOneAndUpdate = function (id, collectionName, data, callback) {
     var collection = db.get(collectionName);
     collection.findOneAndUpdate({ _id: id }, data, function (err, cursor) {
         if (err) {
@@ -76,7 +75,7 @@ monkUtil.findOneAndUpdate = function (id, collectionName, data, callback) {
     collectionName：表名
     callback：返回值
  */
-monkUtil.insertObject = function (collectionName, data, callback) {
+var insertObject = function (collectionName, data, callback) {
     var collection = db.get(collectionName);
     collection.insert(data, function (err, cursor) {
         if (err) {
@@ -97,7 +96,7 @@ monkUtil.insertObject = function (collectionName, data, callback) {
  * collectionName：表名
  * query:条件
  */
-monkUtil.deleteByQuery = function (collectionName, query, callback) {
+var deleteByQuery = function (collectionName, query, callback) {
     var collection = db.get(collectionName);
     collection.remove(query, function (err, cursor) {
         if (err) {
@@ -120,7 +119,7 @@ monkUtil.deleteByQuery = function (collectionName, query, callback) {
  * data,数据
  * 
  */
-monkUtil.updated = function (collectionName, query, data, callback) {
+var updated = function (collectionName, query, data, callback) {
     var collection = db.get(collectionName);
     collection.update(query,{$set:data},function(err,cursor){
         if(err){
@@ -133,4 +132,16 @@ monkUtil.updated = function (collectionName, query, data, callback) {
 /*
 修改 end
 */
-module.exports = monkUtil;
+module.exports = {
+    //查询
+    findALL: findALL,
+    findOne: findOne,
+    findOneByQuery: findOneByQuery,
+    findOneAndUpdate: findOneAndUpdate,
+    //新增
+    insertObject: insertObject,
+    //删除
+    deleteByQuery: deleteByQuery,
+    //修改
+    updated:updated
+};
