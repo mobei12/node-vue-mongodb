@@ -1,5 +1,5 @@
 const monk = require('monk');
-const db = monk('localhost:27017/learn_db');
+const db = monk('localhost:27017/sl_db');
 /*
 查询数据 start
 */

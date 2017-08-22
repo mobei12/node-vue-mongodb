@@ -5,9 +5,7 @@ const crypto = require('crypto');//加密模块
 const mongodbUtil = require('../utils/mongodbUtil');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    var query = {'name':{$regex:/2/i}}
-    mongodbUtil.findOneByQuery(query,'user',[],function(result){
-        res.send(result);
-    });
+    var query = {};
+    console.log(JSON.stringify(req));
   });
 module.exports = router;
