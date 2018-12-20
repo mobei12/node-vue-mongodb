@@ -5,7 +5,7 @@ const db = monk('localhost:27017/sl_db');
 */
 /*  查询全部
     collectionName：表名
-     callback：返回值
+    callback：返回值
  */
 var findALL = function (collectionName, callback) {
     var collection = db.get(collectionName);
